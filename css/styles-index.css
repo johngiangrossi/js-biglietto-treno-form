@@ -5,14 +5,6 @@
     box-sizing: border-box;
 }
 
-ul {
-    list-style-type: none;
-}
-
-a {
-    color: currentColor;
-    text-decoration: none;
-}
 
 /* generics */
 body {
@@ -21,27 +13,11 @@ body {
 
 /* utils */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 40px;
 }
 
-.flex {          /*se servono lascio se no tolgo*/
-    display: flex ;
-}
-
-.row {            /*ideale da usare*/
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 24px;
-}
-
-.row>* {
-    padding: 0 12px;
-}
-
-.w-33 {
-    width: calc(100% / 3);
-}
 
 
 /* debug */
