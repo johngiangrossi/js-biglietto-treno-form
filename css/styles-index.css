@@ -1,0 +1,65 @@
+/* css reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+/* generics */
+body {
+    font-family: sans-serif;
+}
+
+/* utils */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.flex {          /*se servono lascio se no tolgo*/
+    display: flex ;
+}
+
+.row {            /*ideale da usare*/
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 24px;
+}
+
+.row>* {
+    padding: 0 12px;
+}
+
+.w-33 {
+    width: calc(100% / 3);
+}
+
+
+/* debug */
+.debug .container {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.debug .row {
+    border: 2px solid red;
+    padding: 24px;
+    border-radius: 10px;
+}
+
+.debug .row>* {
+    border: 2px solid cornflowerblue;
+    padding: 24px;
+    border-radius: 10px;
+}
+
+
