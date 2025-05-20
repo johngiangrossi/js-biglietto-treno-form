@@ -16,7 +16,20 @@
 
 <body>
 
-   
+    <h1>JS biglietto treno form</h1>
+    <form action="#">
+        <label for="distance">Numero di chilometri da percorrere</label>
+        <input type="text" id="distance">
+        <label for="discount">Selezionare il tipo di sconto</label>
+        <select name="discount" id="discount">
+            <option value="full-price">Prezzo intero</option>
+            <option value="student-discount">Sconto studente</option>
+            <option value="senior-discount">Sconto over 65</option>
+        </select>
+        <button id="load">Carica lo sconto</button>
+        <div id="recap">Recap</div>
+        <div id="final-price">Prezzo finale</div>
+    </form>
 
     
     <script src="./javascript/script.js"></script>

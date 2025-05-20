@@ -11,3 +11,15 @@ va applicato uno sconto del 20% per i minorenni
 va applicato uno sconto del 40% per gli over 65.
 Il recap dei dati e l’output del prezzo finale va stampato in pagina (formattato con massimo due decimali, per indicare centesimi sul prezzo).
 */
+
+//prendo gli elementi dal DOM
+const inputDistance = document.getElementById('distance');
+const inputDiscount = document.getElementById('discount');
+const btnLoader = document.getElementById('load');
+const divRecap = document.getElementById('recap')
+const divFinalPrice = document.getElementById('final-price')
+
+console.log(inputDistance, inputDiscount, btnLoader, divFinalPrice, divRecap);
+
+//aggiungo evento listener
+
