@@ -16,10 +16,55 @@ Il recap dei dati e l’output del prezzo finale va stampato in pagina (formatta
 const inputDistance = document.getElementById('distance');
 const inputDiscount = document.getElementById('discount');
 const btnLoader = document.getElementById('load');
-const divRecap = document.getElementById('recap')
+const divRecapPrice = document.getElementById('recap-price')
+const divRecapDiscount = document.getElementById('recap-discount')
 const divFinalPrice = document.getElementById('final-price')
 
-console.log(inputDistance, inputDiscount, btnLoader, divFinalPrice, divRecap);
+console.log(inputDistance, inputDiscount, btnLoader, divRecapPrice, divRecapDiscount, divFinalPrice);
+
+// funzione per lo sconto
+function getdiscount(price, discount) {
+    discountPrice = (price / 100) * discount
+    return discountPrice
+    // return number
+}
+
+const priceForKm = 0.21
+
 
 //aggiungo evento listener
+btnLoader.addEventListener('click', function () {
+    console.log('calcolo prezzo');
+    
+    // prendo i valori inseriti dall'utente
+    const distance = parseFloat(inputDistance.value);
+    const discount = inputDiscount.value;
 
+    console.log(distance, discount);
+
+    // calcolo gli sconti e prezzo finale
+    priceTicket = priceForKm * distance;
+    finalDiscount = getdiscount(priceTicket, 0)
+    finalPrice = priceTicket;
+
+    if (discount === 'student-discount') {
+        finalDiscount = getdiscount(priceTicket, 20)
+        finalPrice = priceTicket - finalDiscount
+    } else if (discount === 'senior-discount') {
+        finalDiscount = getdiscount(priceTicket, 40)
+        finalPrice = priceTicket - finalDiscount
+    }
+
+    console.log(finalPrice , finalDiscount);
+
+    // stampo il risultato
+    divRecapPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
+        priceTicket,
+      )}`
+    divRecapDiscount.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
+        finalDiscount,
+      )}`  
+    divFinalPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
+        finalPrice,
+      )}`
+})
