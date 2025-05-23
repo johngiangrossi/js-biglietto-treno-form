@@ -30,6 +30,7 @@ const cardRecapDistance = ticketCardElement.querySelector('#recap-distance')
 const cardRecapPrice = ticketCardElement.querySelector('#recap-price')
 const cardRecapDiscount = ticketCardElement.querySelector('#recap-discount')
 const cardFinalPrice = ticketCardElement.querySelector('#final-price')
+const cardTicketType = ticketCardElement.querySelector('#recap-ticket-type')
 
 // console.log(inputDistance, inputDiscount, cardRecapPrice, cardRecapDiscount, cardFinalPrice, inputDate, inputName);
 // console.log(cardRecapDistance, cardRecapNameSurname, cardRecapDate);
@@ -68,7 +69,7 @@ formInputTicketElement.addEventListener('submit', function (e) {
   e.preventDefault()
   // console.log(getFormData())
   // console.log('calcolo prezzo');
-
+  ticketCardElement.classList.remove("invisible")
 
 
   // prendo i valori inseriti dall'utente
@@ -129,6 +130,7 @@ formInputTicketElement.addEventListener('submit', function (e) {
   cardRecapDistance.innerHTML = inputData.distance
   // console.log(inputData.name, inputData.surname)
   cardRecapNameSurname.innerHTML = `${inputData.name} ${inputData.surname}`
+  cardTicketType.innerHTML = inputData.discount
 
   /*
   cardRecapPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(

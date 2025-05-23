@@ -16,7 +16,7 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg bg-dark mb-5" data-bs-theme="dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="https://th.bing.com/th/id/OIP.SxiQtvp7EJybTy_nmzncSwHaE0?rs=1&pid=ImgDetMain" alt="logo train" id="logo-train">
@@ -43,71 +43,81 @@
     </header>
 
     <main>
-        <div class="container border border-5 rounded">
-            
-            <h1 class="text-center">JS biglietto treno form</h1>
-            
-            <form class="row g-3 m-4" id="ticket-form">
-            
-                <div class="col-6">
-                    <label for="name" class="form-label">Nome del passeggero</label>
-                    <input type="text" class="form-control" id="name" placeholder="inserire il nome"
-                        required>
-                </div>
-
-                <div class="col-6">
-                    <label for="surname" class="form-label">Cognome del passeggero</label>
-                    <input type="text" class="form-control" id="surname" placeholder="inserire il cognome"
-                        required>
-                </div>
-                <div class="col-6">
-                    <label for="phone-number" class="form-label">Numero di telefono</label>
-                    <input type="text" class="form-control" id="phone-number" placeholder="inserire il numero di telefono"
-                        required>
-                </div>
-                <div class="col-6">
-                    <label for="date" class="form-label">Data</label>
-                    <input type="date" class="form-control" id="date" required>
-                </div>
-
-                <div class="col-12">
-                    <label for="distance" class="form-label">Numero di chilometri da percorrere</label>
-                    <input type="text" class="form-control" id="distance"
-                        placeholder="inserire il numero di chilometri da percorrere" required>
-                </div>
-            
-                <div class="col-12">
-                    <label for="discount" class="form-label">Selezionare il tipo di biglietto</label>
-                    <select name="discount" id="discount" class="form-select">
-                        <option value="full-price" selected>Prezzo intero</option>
-                        <option value="student-discount">Sconto studente</option>
-                        <option value="senior-discount">Sconto over 65</option>
-                    </select>
-                </div>
-            
+        <section>
+            <div class="container mx-auto p-4 mb-3">
                 
-                <div class="col-12 text-center">
-                    <button id="count" type="submit" class="btn btn-primary">Cerca il biglietto</button>
-                </div>
-            </form>
-            <div class="card" id="card-ticket">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6 d-flex flex-column justify-content-center">
-                            <h5 class="card-title" id="recap-passenger-name-surname">Nome Cognome</h5>
-                            <p class="card-text" id="recap-date">Data</p>
-                            <p class="card-text">Distanza da percorrere <span id="recap-distance">--</span> KM</p>
-                        </div>
-                        <img src="https://th.bing.com/th/id/OIP.SxiQtvp7EJybTy_nmzncSwHaE0?rs=1&pid=ImgDetMain" class="col-6 img-thumbnail" alt="logo treno">
+                <h1 class="text-center">JS biglietto treno form</h1>
+                
+                <form class="row g-3 m-4" id="ticket-form">
+                
+                    <div class="col-12 col-md-6">
+                        <label for="name" class="form-label">Nome del passeggero</label>
+                        <input type="text" class="form-control" id="name" placeholder="inserire il nome"
+                            required>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between">Prezzo del biglietto <span id="recap-price">--</span></li>
-                        <li class="list-group-item d-flex justify-content-between">Lo sconto applicato <span id="recap-discount">--</span></li>
-                        <li class="list-group-item d-flex justify-content-between">Prezzo finale <span id="final-price">--</span></li>           
-                    </ul>
-                </div>     
+
+                    <div class="col-12 col-md-6">
+                        <label for="surname" class="form-label">Cognome del passeggero</label>
+                        <input type="text" class="form-control" id="surname" placeholder="inserire il cognome"
+                            required>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <label for="phone-number" class="form-label">Numero di telefono</label>
+                        <input type="text" class="form-control" id="phone-number" placeholder="inserire il numero di telefono"
+                            required>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <label for="date" class="form-label">Data</label>
+                        <input type="date" class="form-control" id="date" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="distance" class="form-label">Numero di chilometri da percorrere</label>
+                        <input type="text" class="form-control" id="distance"
+                            placeholder="inserire il numero di chilometri da percorrere" required>
+                    </div>
+                
+                    <div class="col-12">
+                        <label for="discount" class="form-label">Selezionare il tipo di biglietto</label>
+                        <select name="discount" id="discount" class="form-select">
+                            <option value="full-price" selected>Prezzo intero</option>
+                            <option value="student-discount">Sconto studente</option>
+                            <option value="senior-discount">Sconto over 65</option>
+                        </select>
+                    </div>
+                
+                    
+                    <div class="col-12 text-center">
+                        <button id="count" type="submit" class="btn btn-primary">Cerca il biglietto</button>
+                    </div>
+                </form>
             </div>
-        </div>
+        </section>
+        <section  id="card-ticket" class="invisible">
+            <div class="container">
+                <div class="row">
+                    <div class="card mx-auto col-10 col-md-10 col-lg-8 p-0">
+                        <h2 class="card-header">Biglietto del treno</h2>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6 d-flex flex-column justify-content-center">
+                                    <h3 class="card-title fw-bold" id="recap-passenger-name-surname">Nome Cognome</h3>
+                                    <p class="card-text" id="recap-date">Data</p>
+                                    <p class="card-text">Distanza da percorrere: <span id="recap-distance">--</span> KM</p>
+                                    <p class="card-text">Tipo di biglietto: <span id="recap-ticket-type">--</span></p>
+                                </div>
+                                <img src="https://th.bing.com/th/id/OIP.SxiQtvp7EJybTy_nmzncSwHaE0?rs=1&pid=ImgDetMain" class="col-6 img-thumbnail" alt="logo treno">
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between">Prezzo del biglietto <span id="recap-price">--</span></li>
+                                <li class="list-group-item d-flex justify-content-between">Lo sconto applicato <span id="recap-discount">--</span></li>
+                                <li class="list-group-item d-flex justify-content-between">Prezzo finale <span id="final-price">--</span></li>           
+                            </ul>
+                        </div>     
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     
