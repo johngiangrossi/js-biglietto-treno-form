@@ -13,15 +13,27 @@ Il recap dei dati e l’output del prezzo finale va stampato in pagina (formatta
 */
 
 //prendo gli elementi dal DOM
-const inputDistance = document.getElementById('distance');
-const inputDiscount = document.getElementById('discount');
-const btnLoader = document.getElementById('count');
-const divRecapPrice = document.getElementById('recap-price')
-const divRecapDiscount = document.getElementById('recap-discount')
-const divFinalPrice = document.getElementById('final-price')
+const formInputTicketElement = document.getElementById('ticket-form');
+const ticketCardElement = document.getElementById('card-ticket');
 
-// console.log(inputDistance, inputDiscount, btnLoader, divRecapPrice, divRecapDiscount, divFinalPrice);
-console.dir(inputDistance)
+// prendo gli elementi input ticket
+const inputName = formInputTicketElement.querySelector('#name');
+const inputSurname = formInputTicketElement.querySelector('#surname');
+const inputDate = formInputTicketElement.querySelector('#date');
+const inputDistance = formInputTicketElement.querySelector('#distance');
+const inputDiscount = formInputTicketElement.querySelector('#discount');
+
+// prendo gli elementi output ticket
+const cardRecapNameSurname = ticketCardElement.querySelector('#recap-passenger-name-surname')
+const cardRecapDate = ticketCardElement.querySelector('#recap-date')
+const cardRecapDistance = ticketCardElement.querySelector('#recap-distance')
+const cardRecapPrice = ticketCardElement.querySelector('#recap-price')
+const cardRecapDiscount = ticketCardElement.querySelector('#recap-discount')
+const cardFinalPrice = ticketCardElement.querySelector('#final-price')
+
+// console.log(inputDistance, inputDiscount, cardRecapPrice, cardRecapDiscount, cardFinalPrice, inputDate, inputName);
+// console.log(cardRecapDistance, cardRecapNameSurname, cardRecapDate);
+
 
 // funzione per lo sconto
 function getdiscount(price, discount) {
@@ -30,45 +42,70 @@ function getdiscount(price, discount) {
   // return number
 }
 
+// funzione per gli elementi input
+function getFormData() {
+  const name = inputName.value
+  const surname = inputSurname.value
+  const date = inputDate.value
+  const distance = Math.abs(parseFloat(inputDistance.value));
+  const discount = inputDiscount.value;
+
+  return {
+    name,
+    surname,
+    date,
+    distance,
+    discount
+  }
+}
+
+// console.log(getFormData())
 const priceForKm = 0.21
 
 
 //aggiungo evento listener
-btnLoader.addEventListener('click', function () {
+formInputTicketElement.addEventListener('submit', function (e) {
+  e.preventDefault()
+  // console.log(getFormData())
   // console.log('calcolo prezzo');
-  
+
+
+
   // prendo i valori inseriti dall'utente
-  const distance = Math.abs(parseFloat(inputDistance.value));
-  const discount = inputDiscount.value;
+  const inputData = getFormData()
+  // console.log(inputData);
   
+  
+  /*
   // verifico utente inserisca valori validi
-  if (isNaN(distance)) {
-    divRecapPrice.innerHTML = 0 + ' €' 
-    divRecapDiscount.innerHTML = 0 + ' €' 
-    divFinalPrice.innerHTML = 0 + ' €' 
+  if (isNaN(inputData.distance)) {
+    cardRecapPrice.innerHTML = 0 + ' €' 
+    cardRecapDiscount.innerHTML = 0 + ' €' 
+    cardFinalPrice.innerHTML = 0 + ' €' 
     inputDistance.classList.add("border-danger")
     inputDistance.placeholder = "Inserire un numero valido";
-    /*
-    divRecapPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
-      0,
-    )}`
-    divRecapDiscount.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
-      0,
-    )}`  
-    divFinalPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
-      0,
-    )}`
-    */
+   
+    // cardRecapPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
+    //   0,
+    // )}`
+    // cardRecapDiscount.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
+    //   0,
+    // )}`  
+    // cardFinalPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
+    //   0,
+    // )}`
+   
     return alert('inserire un numero valido')
   } else {
     inputDistance.classList.remove("border-danger")
     inputDistance.placeholder = "inserire il numero di chilometri da percorrere";
   }
-
   // console.log(distance, discount);
+  */
+  
 
   // calcolo gli sconti e prezzo finale
-  priceTicket = priceForKm * distance;
+  priceTicket = priceForKm * inputData.distance;
   finalDiscount = getdiscount(priceTicket, 0)
   finalPrice = priceTicket;
 
@@ -83,18 +120,26 @@ btnLoader.addEventListener('click', function () {
   // console.log(finalPrice , finalDiscount);
 
   // stampo il risultato
-  divRecapPrice.innerHTML = priceTicket.toFixed(2) + ' €' 
-  divRecapDiscount.innerHTML = finalDiscount.toFixed(2) + ' €' 
-  divFinalPrice.innerHTML = finalPrice.toFixed(2) + ' €' 
+  cardRecapPrice.innerHTML = priceTicket.toFixed(2) + ' €' 
+  cardRecapDiscount.innerHTML = finalDiscount.toFixed(2) + ' €' 
+  cardFinalPrice.innerHTML = finalPrice.toFixed(2) + ' €'
+  // console.log(inputData.date)
+  cardRecapDate.innerHTML = inputData.date
+  // console.log(inputData.distance)
+  cardRecapDistance.innerHTML = inputData.distance
+  // console.log(inputData.name, inputData.surname)
+  cardRecapNameSurname.innerHTML = `${inputData.name} ${inputData.surname}`
+
   /*
-  divRecapPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
+  cardRecapPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
       priceTicket,
     )}`
-  divRecapDiscount.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
+  cardRecapDiscount.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
       finalDiscount,
     )}`  
-  divFinalPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
+  cardFinalPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
       finalPrice,
     )}`
     */
 })
+

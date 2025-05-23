@@ -47,7 +47,7 @@
             
             <h1 class="text-center">JS biglietto treno form</h1>
             
-            <form class="row g-3 m-4">
+            <form class="row g-3 m-4" id="ticket-form">
             
                 <div class="col-6">
                     <label for="name" class="form-label">Nome del passeggero</label>
@@ -87,16 +87,16 @@
             
                 
                 <div class="col-12 text-center">
-                    <button id="count" type="button" class="btn btn-primary">Cerca il biglietto</button>
+                    <button id="count" type="submit" class="btn btn-primary">Cerca il biglietto</button>
                 </div>
             </form>
-            <div class="card">
+            <div class="card" id="card-ticket">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 d-flex flex-column justify-content-center">
-                            <h5 class="card-title">Nome Cognome</h5>
-                            <p class="card-text">Data</p>
-                            <p class="card-text">Distanza da percorrere</p>
+                            <h5 class="card-title" id="recap-passenger-name-surname">Nome Cognome</h5>
+                            <p class="card-text" id="recap-date">Data</p>
+                            <p class="card-text">Distanza da percorrere <span id="recap-distance">--</span> KM</p>
                         </div>
                         <img src="https://th.bing.com/th/id/OIP.SxiQtvp7EJybTy_nmzncSwHaE0?rs=1&pid=ImgDetMain" class="col-6 img-thumbnail" alt="logo treno">
                     </div>
