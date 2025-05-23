@@ -19,6 +19,11 @@ body {
 }
 
 
+/* navbar */
+#logo-train {
+    width: 40px;
+}
+
 
 /* debug */
 .debug .container {

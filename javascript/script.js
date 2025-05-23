@@ -21,7 +21,7 @@ const divRecapDiscount = document.getElementById('recap-discount')
 const divFinalPrice = document.getElementById('final-price')
 
 // console.log(inputDistance, inputDiscount, btnLoader, divRecapPrice, divRecapDiscount, divFinalPrice);
-
+console.dir(inputDistance)
 
 // funzione per lo sconto
 function getdiscount(price, discount) {
@@ -43,16 +43,26 @@ btnLoader.addEventListener('click', function () {
   
   // verifico utente inserisca valori validi
   if (isNaN(distance)) {
+    divRecapPrice.innerHTML = 0 + ' €' 
+    divRecapDiscount.innerHTML = 0 + ' €' 
+    divFinalPrice.innerHTML = 0 + ' €' 
+    inputDistance.classList.add("border-danger")
+    inputDistance.placeholder = "Inserire un numero valido";
+    /*
     divRecapPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
       0,
     )}`
-  divRecapDiscount.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
+    divRecapDiscount.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
       0,
     )}`  
-  divFinalPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
+    divFinalPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
       0,
     )}`
+    */
     return alert('inserire un numero valido')
+  } else {
+    inputDistance.classList.remove("border-danger")
+    inputDistance.placeholder = "inserire il numero di chilometri da percorrere";
   }
 
   // console.log(distance, discount);
@@ -73,6 +83,10 @@ btnLoader.addEventListener('click', function () {
   // console.log(finalPrice , finalDiscount);
 
   // stampo il risultato
+  divRecapPrice.innerHTML = priceTicket.toFixed(2) + ' €' 
+  divRecapDiscount.innerHTML = finalDiscount.toFixed(2) + ' €' 
+  divFinalPrice.innerHTML = finalPrice.toFixed(2) + ' €' 
+  /*
   divRecapPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
       priceTicket,
     )}`
@@ -82,4 +96,5 @@ btnLoader.addEventListener('click', function () {
   divFinalPrice.innerHTML = `${new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR" }).format(
       finalPrice,
     )}`
+    */
 })
